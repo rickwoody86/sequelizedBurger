@@ -9,30 +9,29 @@
             <h1>Eat-Da-Burger!</h1>
             <div class="row">
                 <div class="col-xs-6">
-                    {{#each burger}}
-                        {{#unless this.devoured}}
-                        <div class="row">
-                            <div class="devour_btn">
-                                <form action="/{{this.id}}?_method=PUT" method="POST">
-                                    <!--<input type="hidden" name="id" value="{{this.id}}">-->
-                                    <button type="submit">Devour it</button>
-                                </form>
-                            </div>
-                            <div class="burger_not_devoured">
-                                {{this.id}}. {{this.burger_name}}
-                            </div>
+                    {{#each burgers}}
+                    {{#unless this.devoured}}
+                    <div class="row">
+                        <div class="devour_btn">
+                            <form action="/{{this.id}}?_method=PUT" method="POST">
+                                <button type="submit">Devour it</button>
+                            </form>
                         </div>
-                        {{/unless}}
+                        <div class="burger_not_devoured">
+                            {{this.id}}. {{this.burger_name}}
+                        </div>
+                    </div>
+                    {{/unless}}
                     {{/each}}
                 </div>
                 <div class="clearfix visible-xs-block"></div>
                 <div class="col-xs-6">
-                    {{#each burger}}
-                        {{#if this.devoured}}
-                            <div class="burger_devoured">
-                                {{this.id}}. {{this.burger_name}}
-                            </div>
-                        {{/if}}
+                    {{#each burgers}}
+                    {{#if this.devoured}}
+                    <div class="burger_devoured">
+                        {{this.id}}. {{this.burger_name}}
+                    </div>
+                    {{/if}}
                     {{/each}}
                 </div>
             </div>

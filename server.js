@@ -3,8 +3,10 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
 // To work on Heroku / Port to listen to
-var port = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8080;
 var app = express();
+
+var db = require('./models');
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(__dirname + "/public"));
@@ -20,8 +22,12 @@ app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
 var routes = require("./controllers/burgers_controller.js");
-app.use("/", routes);
 
-app.listen(port, function() {
-	console.log("Listening on port %s", port);
+app.use('/', routes);
+
+
+db.sequelize.sync({}).then(function() {
+	app.listen(PORT, function() {
+		console.log("App listening to PORT: " + PORT);
+	});
 });
