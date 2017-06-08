@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "2107",
-    "database": "burgers_db",
+    "password": "",
+    "database": "seqburgers_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

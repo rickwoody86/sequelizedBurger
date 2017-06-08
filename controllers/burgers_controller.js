@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
-var burger = require("../models/burger.js");
+
 
 
 // Create all our routes and set up logic within those routes where required.
@@ -16,9 +16,9 @@ router.get("/", function(req, res) {
 });
 });
 
-router.post("/create", function(req, res) {
+router.post("/", function(req, res) {
   console.log(req.body.burger_name);
-  db.Burgers.create({
+  db.Burger.create({
     burger_name: req.body.burger_name,
     devoured: req.body.devoured
   }).then(function(data) {
@@ -27,8 +27,8 @@ router.post("/create", function(req, res) {
 });
 
 router.put("/:id", function(req, res) {
-  db.Burgers.update({
-    devoured: req.body.devoured
+  db.Burger.update({
+    devoured: true
   },
   {
     where:{id:req.params.id}

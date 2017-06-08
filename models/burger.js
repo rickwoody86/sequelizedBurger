@@ -13,19 +13,15 @@ module.exports = function (sequelize, DataTypes){
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len:[1]
+                len: [1]
             }
-        },
+            },
 
         devoured:{
             type: DataTypes.BOOLEAN,
             defaultValue: false
-        },
-
-        date:{
-            type: DataTypes.DATE
         }
-        // timestamps: {true}
+       
     });
     return Burger;
 };
